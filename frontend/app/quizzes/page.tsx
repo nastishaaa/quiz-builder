@@ -9,9 +9,10 @@ export default function QuizListPage() {
   const dispatch = useAppDispatch();
   const quizzes = useAppSelector(state => state.quiz.quizzes);
 
-  useEffect(() => {
-    dispatch(getQuizzes());
-  }, []);
+    useEffect(() => {
+        dispatch(getQuizzes());
+        console.log(quizzes);
+    }, []);
 
   const handleDelete = (id: string) => {
     dispatch(deleteQuiz(id));
@@ -19,7 +20,7 @@ export default function QuizListPage() {
 
   return (
     <div className={s.wrapper}>
-      {quizzes.map(q => (
+      {Array.isArray(quizzes) && quizzes?.map(q => (
         <div key={q.id} className={s.card}>
           <Link href={`/quizzes/${q.id}`}>
             <div>

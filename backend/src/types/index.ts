@@ -1,22 +1,28 @@
-// Quiz тип
+export type Question = {
+    id: number;
+    text: string;
+    type: string;
+    options: string[];
+    quizId: number;
+};
+
 export type Quiz = {
     id: number;
     title: string;
     createdAt: Date;
-    questions: Question[];
+    questions: {
+        id: number;
+        text: string;
+        type: string;
+        options: string[];
+        quizId: number;
+    }[];
 };
 
-// Question тип
-export type Question = {
-    id: number;
-    text: string;
-    quizId: number;
-    quiz: Quiz;
-};
-
-// Вхідні дані для створення квізу
 export type CreateQuestionInput = {
     text: string;
+    type: string;     
+    options: string[];
 };
 
 export type CreateQuizInput = {
@@ -24,14 +30,8 @@ export type CreateQuizInput = {
     questions: CreateQuestionInput[];
 };
 
-// Вихідні дані для API (без циклічності)
 export type QuizResponse = {
-    id: number;
-    title: string;
-    createdAt: Date;
-    questions: {
-        id: number;
-        text: string;
-        quizId: number;
-    }[];
+    status: number;
+    message: string;
+    data: Quiz; 
 };

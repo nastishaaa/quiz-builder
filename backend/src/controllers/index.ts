@@ -25,20 +25,20 @@ export async function getQuizByIdController(req: Request, res: Response) {
         const id = Number(req.params.id);
 
         if (isNaN(id)) {
-            throw createHttpError(400, 'Invalid train id');
+            throw createHttpError(400, 'Invalid quiz id');
         }
 
-        const result: QuizResponse = await getQuizById(id);      
+        const result = await getQuizById(id) as Quiz; 
 
         res.status(200).json({
             status: 200,
             message: "Quiz fetched successfully",
             data: result
         });
-    } catch (error: unknown) {
+    } catch (error: any) {
         res.status(404).json({
             status: 404,
-            message: 'Something went wrong! There are no quiz with your id.',
+            message: error.message || 'Quiz not found',
         });
     }
 }

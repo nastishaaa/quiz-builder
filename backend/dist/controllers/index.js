@@ -21,7 +21,7 @@ export async function getQuizByIdController(req, res) {
     try {
         const id = Number(req.params.id);
         if (isNaN(id)) {
-            throw createHttpError(400, 'Invalid train id');
+            throw createHttpError(400, 'Invalid quiz id');
         }
         const result = await getQuizById(id);
         res.status(200).json({
@@ -33,7 +33,7 @@ export async function getQuizByIdController(req, res) {
     catch (error) {
         res.status(404).json({
             status: 404,
-            message: 'Something went wrong! There are no quiz with your id.',
+            message: error.message || 'Quiz not found',
         });
     }
 }
@@ -60,6 +60,7 @@ export async function deleteQuizeController(req, res) {
         res.status(204).send();
     }
     catch (err) {
+        console.error("FULL ERROR:", err);
         res.status(err.status || 500).json({ status: err.status || 500, message: err.message });
     }
 }

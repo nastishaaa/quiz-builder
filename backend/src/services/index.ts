@@ -2,6 +2,7 @@ import type { Request, Response, NextFunction } from "express";
 import prisma from "../prisma.js";
 import createHttpError from "http-errors";
 import { CreateQuizInput, QuizResponse } from "../types/index.js";
+import { Quiz } from "@prisma/client";
 
 export async function getAllQuizes() {
     try {
@@ -36,19 +37,26 @@ export async function getQuizById(id: number) {
     }
 }
 
-export async function createQuize(payload: CreateQuizInput): Promise<QuizResponse> {
+export async function createQuize(payload: CreateQuizInput): Promise<Quiz> { 
     try {
         const data = await prisma.quiz.create({
             data: {
                 title: payload.title,
                 questions: {
-                    create: payload.questions,
+                    create: payload.questions.map(q => ({
+                        text: q.text,
+                        type: q.type,
+                        options: q.options || [],
+                    })),
                 },
             },
             include: { questions: true },
         });
-        return data
+
+        
+        return data as Quiz; 
     } catch (error) {
+        console.error("Prisma Error:", error);
         throw createHttpError(500, 'Something went wrong!');
     }
 }

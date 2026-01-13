@@ -6,49 +6,98 @@
 
 .titleInput {
     width: 100%;
+    margin-top: 10px;
     padding: 12px;
-    font-size: 18px;
-    border: 1px solid #ddd;
     border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    background-color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    color: #000000;
 }
 
-.questionCard {
-    margin-top: 16px;
-    padding: 16px;
-    border-radius: 12px;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
+.titleInput:focus {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    background-color: #ffffff;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    color: #000000;
 }
 
 .smallInput {
     width: 100%;
-    margin-top: 8px;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #e5e7eb;
+    background: #f9fafb;
+    color: #374151 !important;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.smallInput:focus {
+    background: #ffffff;
+    border-color: #a855f7;
+    box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15);
+    color: #000000 !important;
+}
+
+.titleInput::placeholder,
+.smallInput::placeholder {
+    color: #9ca3af !important;
+    font-weight: 400;
 }
 
 .buttons {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     margin-top: 16px;
 }
 
 .typeBtn {
     flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 12px;
+    border: 2px solid #f3f4f6;
     background: white;
+    font-weight: 600;
+    color: #4b5563 !important;
     cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.typeBtnActive,
+.typeBtn:hover {
+    border-color: #6366f1;
+    color: #6366f1 !important;
+    background: rgba(99, 102, 241, 0.05);
 }
 
 .submitBtn {
     width: 100%;
     margin-top: 30px;
-    padding: 14px;
-    background: black;
+    padding: 16px;
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
     color: white;
-    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    border-radius: 16px;
     cursor: pointer;
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(99, 102, 241, 0.4);
+}
+
+.submitBtn:active {
+    transform: translateY(0);
 }

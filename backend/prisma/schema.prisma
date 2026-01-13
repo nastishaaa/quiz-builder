@@ -1,11 +1,11 @@
 generator client {
-  provider      = "postgresql"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Quiz {
@@ -16,8 +16,10 @@ model Quiz {
 }
 
 model Question {
-  id     Int    @id @default(autoincrement())
-  text   String
-  quizId Int
-  quiz   Quiz   @relation(fields: [quizId], references: [id])
+  id      Int      @id @default(autoincrement())
+  text    String
+  type    String?
+  options String[]
+  quizId  Int
+  quiz    Quiz     @relation(fields: [quizId], references: [id])
 }

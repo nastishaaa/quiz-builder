@@ -14,7 +14,7 @@ export const getQuizzes = createAsyncThunk(
         try {
             const res = await axios.get('http://localhost:5000/quizzes');
 
-            return res.data.data;
+            return res.data.data.quizes;
         } catch (error: any) {
             return thunkAPI.rejectWithValue(error.message);
         }
@@ -33,30 +33,29 @@ export const getQuizById = createAsyncThunk<Quiz, string>(
   }
 );
 
-export const createQuiz = createAsyncThunk<Quiz, CreateQuizPayload>(
-  'quizzes/createQuiz',
-  async (quizData, thunkAPI) => {
-    try {
-      const { data } = await axios.post(
-        `http://localhost:5000/quizzes`,
-        quizData,
-        { withCredentials: true }
-      );
-      return data; // має повертати повний Quiz
-    } catch (e: any) {
-      return thunkAPI.rejectWithValue(
-        e.response?.data?.message || 'Failed to create quiz'
-      );
+export const createQuiz = createAsyncThunk(
+    'quizzes/createQuiz',
+    async (quizData: CreateQuizPayload, thunkAPI) => {
+        try {
+            const { data } = await axios.post(
+                `http://localhost:5000/quizzes`,
+                quizData,
+                { withCredentials: true }
+            );
+            return data.data;
+        } catch (e: any) {
+            return thunkAPI.rejectWithValue(
+                e.response?.data?.message || 'Failed to create quiz'
+            );
+        }
     }
-  }
 );
-
 export const deleteQuiz = createAsyncThunk<string, string>(
   'quizzes/deleteQuiz',
   async (quizId, thunkAPI) => {
     try {
       await axios.delete(`http://localhost:5000/quizzes/${quizId}`);
-      return quizId; // <--- повертай quizId як string
+      return quizId;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(
         e.response?.data?.message || 'Failed to delete quiz'
