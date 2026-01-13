@@ -1,0 +1,31 @@
+.wrapper {
+    max-width: 700px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 16px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.count {
+    font-size: 13px;
+    opacity: 0.6;
+}
+
+.delete {
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}

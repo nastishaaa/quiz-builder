@@ -1,0 +1,23 @@
+.wrapper {
+    max-width: 700px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.question {
+    background: #f9fafb;
+    padding: 14px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.type {
+    font-size: 12px;
+    opacity: 0.5;
+}

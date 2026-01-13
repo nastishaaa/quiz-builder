@@ -1,0 +1,54 @@
+.wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.titleInput {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+.questionCard {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+}
+
+.smallInput {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.typeBtn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+}
+
+.submitBtn {
+    width: 100%;
+    margin-top: 30px;
+    padding: 14px;
+    background: black;
+    color: white;
+    border-radius: 14px;
+    cursor: pointer;
+}
